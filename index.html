@@ -166,7 +166,7 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(26, 92, 46, 0.7), rgba(26, 26, 26, 0.7)), url('https://images.unsplash.com/photo-1596414086775-3e32150a46ce?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+            background: linear-gradient(rgba(26, 92, 46, 0.72), rgba(26, 26, 26, 0.72)), url('images/tea-garden-hero.jpg') center/cover no-repeat;
             display: flex;
             align-items: center;
             text-align: center;
@@ -208,19 +208,113 @@
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             overflow: hidden;
+            position: relative;
         }
         .about-img img {
             width: 100%;
-            height: auto;
+            height: 440px;
+            object-fit: cover;
             display: block;
             transition: transform 0.5s ease;
         }
         .about-img:hover img {
             transform: scale(1.05);
         }
+        .about-caption-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(26, 92, 46, 0.92);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border-left: 3px solid var(--secondary);
+        }
         .about-text p {
             margin-bottom: 20px;
             font-size: 1.1rem;
+        }
+
+        /* Garden & Workers Gallery Section */
+        .garden-gallery {
+            background-color: #fbf9f5;
+            position: relative;
+        }
+        .gallery-subtitle {
+            text-align: center;
+            max-width: 680px;
+            margin: -2rem auto 3rem;
+            font-size: 1.1rem;
+            color: #555;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .gallery-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 22px rgba(0,0,0,0.07);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            display: flex;
+            flex-direction: column;
+            border-bottom: 3px solid transparent;
+        }
+        .gallery-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+            border-bottom-color: var(--secondary);
+        }
+        .gallery-img-wrap {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+        .gallery-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            display: block;
+        }
+        .gallery-card:hover .gallery-img-wrap img {
+            transform: scale(1.08);
+        }
+        .gallery-tag {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: rgba(26, 92, 46, 0.9);
+            color: var(--white);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            backdrop-filter: blur(4px);
+        }
+        .gallery-content {
+            padding: 24px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .gallery-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        .gallery-content p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
         }
 
         /* Products Section */
@@ -564,6 +658,7 @@
             <ul class="nav-links" id="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#gardens">Gardens & Workers</a></li>
                 <li><a href="#products">Products</a></li>
                 <li><a href="#why-us">Why Us</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -590,13 +685,98 @@
             <h2 class="section-title reveal">Our Heritage</h2>
             <div class="about-grid">
                 <div class="about-img reveal">
-                    <img src="https://images.unsplash.com/photo-1576092762791-dd9e22206477?q=80&w=2070&auto=format&fit=crop" alt="Tea Gardens in Sylhet, Bangladesh">
+                    <img src="images/tea-worker-plucking.jpg" alt="Artisan Tea Plucker in Sylhet Garden, Bangladesh">
+                    <div class="about-caption-badge">
+                        <i class="fas fa-map-marker-alt"></i> Sylhet & Sreemangal Estates, Bangladesh
+                    </div>
                 </div>
                 <div class="about-text reveal">
                     <p>Rooted in the lush, rolling hills of Sylhet and Chittagong, <strong>RUHA</strong> carries forward the rich legacy of Bangladesh's tea heritage. For generations, our fertile soils and unique monsoon climate have produced some of the world's finest teas.</p>
                     <p>We work directly with historic tea estates, ensuring that every leaf is plucked at the peak of perfection. Our commitment to quality, sustainability, and ethical farming practices allows us to deliver an authentic taste of Bangladesh to connoisseurs across the globe.</p>
                     <p>From the garden to your cup, we oversee every step of the process with meticulous care, guaranteeing unmatched freshness and flavor in every batch we export.</p>
-                    <a href="#contact" class="btn btn-outline" style="margin-top: 20px;">Learn More</a>
+                    <a href="#gardens" class="btn btn-outline" style="margin-top: 20px;">Explore Our Gardens</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gardens & Workers Gallery Section -->
+    <section id="gardens" class="garden-gallery section-padding">
+        <div class="container">
+            <h2 class="section-title reveal">Our Gardens & Artisans</h2>
+            <p class="gallery-subtitle reveal">Every cup of RUHA tea carries the soul of Bangladesh's historic tea gardens and the generational craft of our dedicated tea workers.</p>
+            
+            <div class="gallery-grid">
+                <!-- Card 1 -->
+                <div class="gallery-card reveal">
+                    <div class="gallery-img-wrap">
+                        <img src="images/tea-hills.jpg" alt="Rolling hills of Sylhet tea gardens">
+                        <span class="gallery-tag"><i class="fas fa-mountain"></i> The Terroir</span>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Misty Hills of Sylhet</h3>
+                        <p>High-altitude terraced slopes blessed by gentle monsoon rains, creating ideal microclimates for bold and fragrant tea leaves.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="gallery-card reveal">
+                    <div class="gallery-img-wrap">
+                        <img src="images/tea-worker-plucking.jpg" alt="Skilled tea plucker harvesting tea leaves">
+                        <span class="gallery-tag"><i class="fas fa-hands"></i> Skilled Pluckers</span>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Generations of Expertise</h3>
+                        <p>Our skilled pluckers bring decades of generational intuition to harvest only the finest, tender young shoots at dawn.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="gallery-card reveal">
+                    <div class="gallery-img-wrap">
+                        <img src="images/hand-plucking.jpg" alt="Two leaves and a bud hand plucking technique">
+                        <span class="gallery-tag"><i class="fas fa-leaf"></i> Golden Standard</span>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Two Leaves & A Bud</h3>
+                        <p>Strict hand-plucking standards guarantee that only the highest grade of antioxidant-rich tea tips enter our production line.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="gallery-card reveal">
+                    <div class="gallery-img-wrap">
+                        <img src="images/fresh-leaves.jpg" alt="Fresh morning tea harvest leaves">
+                        <span class="gallery-tag"><i class="fas fa-seedling"></i> Fresh Harvest</span>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Peak Harvest Freshness</h3>
+                        <p>Leaves are transported to curing within hours of plucking, sealing in natural essential oils, vibrant color, and rich polyphenol aroma.</p>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="gallery-card reveal">
+                    <div class="gallery-img-wrap">
+                        <img src="images/tea-worker-harvest.jpg" alt="Ethical sourcing and garden worker community">
+                        <span class="gallery-tag"><i class="fas fa-heart"></i> Ethical Community</span>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Brewing Hope for Workers</h3>
+                        <p>At RUHA, "Brewing Hope" means fair compensation, worker healthcare, and educational empowerment for garden communities.</p>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="gallery-card reveal">
+                    <div class="gallery-img-wrap">
+                        <img src="images/tea-garden-hero.jpg" alt="Sreemangal tea capital estates">
+                        <span class="gallery-tag"><i class="fas fa-sun"></i> 180+ Years Heritage</span>
+                    </div>
+                    <div class="gallery-content">
+                        <h3>Sreemangal Heritage</h3>
+                        <p>Sourcing directly from Bangladesh's tea capital, home to historic estates established in the 1850s with pristine legacy soils.</p>
+                    </div>
                 </div>
             </div>
         </div>

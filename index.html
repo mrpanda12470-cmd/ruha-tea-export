@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RUHA | Premium Bangladesh Tea Exporter — Brewing Hope</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #1a5c2e;
+            --secondary: #c49b3c;
+            --light: #f5f0e8;
+            --dark: #1a1a1a;
+            --white: #ffffff;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--primary);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+            margin: 15px auto 0;
+        }
+        .section-padding {
+            padding: 80px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        .btn-primary {
+            background-color: var(--secondary);
+            color: var(--white);
+        }
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--secondary);
+            border-color: var(--secondary);
+        }
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+        nav.scrolled {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+        nav.scrolled .logo, nav.scrolled .nav-links a {
+            color: var(--primary);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            transition: color 0.3s ease;
+        }
+        .logo span {
+            color: var(--secondary);
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--white);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        .mobile-menu-btn {
+            display: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        nav.scrolled .mobile-menu-btn {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(26, 92, 46, 0.7), rgba(26, 26, 26, 0.7)), url('https://images.unsplash.com/photo-1596414086775-3e32150a46ce?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+        .hero-content {
+            width: 100%;
+        }
+        .hero h1 {
+            color: var(--white);
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+        .hero p {
+            color: var(--light);
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            font-family: var(--font-heading);
+            animation: fadeInUp 1s ease 0.2s;
+            animation-fill-mode: both;
+        }
+        .hero .btn {
+            animation: fadeInUp 1s ease 0.4s;
+            animation-fill-mode: both;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--white);
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .about-img {
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        /* Products Section */
+        .products {
+            background-color: var(--light);
+            position: relative;
+        }
+        .products::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M50 20 C20 20 10 50 10 50 C10 50 20 80 50 80 C80 80 90 50 90 50 C90 50 80 20 50 20" fill="none" stroke="%231a5c2e" stroke-width="0.5" opacity="0.1"/></svg>') repeat;
+            opacity: 0.5;
+            z-index: 0;
+        }
+        .products .container {
+            position: relative;
+            z-index: 1;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .product-card {
+            background-color: var(--white);
+            padding: 40px 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-bottom: 4px solid var(--secondary);
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .product-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        .product-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        .product-desc {
+            font-size: 1rem;
+            margin-bottom: 25px;
+            color: #666;
+        }
+
+        /* Why Choose Us */
+        .why-us {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        .why-us .section-title {
+            color: var(--white);
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+        .feature-item i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        .feature-item h3 {
+            color: var(--white);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        .feature-item p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* Export Markets */
+        .export-markets {
+            background-color: var(--white);
+        }
+        .markets-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .market-badge {
+            background-color: var(--light);
+            padding: 15px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        .market-badge:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: translateY(-5px);
+        }
+
+        /* Certifications */
+        .certifications {
+            background-color: var(--light);
+            padding: 50px 0;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .cert-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        .cert-logos div {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            opacity: 0.7;
+            padding: 20px;
+            border: 2px dashed var(--primary);
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--white);
+        }
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--light);
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        .form-group {
+            margin-bottom: 25px;
+        }
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        .form-row .form-group {
+            flex: 1;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            background-color: var(--white);
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-col h4 {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        .footer-col p {
+            color: #aaa;
+            margin-bottom: 15px;
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        .footer-col ul li a {
+            color: #aaa;
+            transition: color 0.3s ease;
+        }
+        .footer-col ul li a:hover {
+            color: var(--secondary);
+        }
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            color: var(--white);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            color: white;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .hero h1 { font-size: 3rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            .form-row { flex-direction: column; gap: 0; }
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: left 0.3s ease;
+            }
+            .nav-links.active {
+                left: 0;
+            }
+            .nav-links a {
+                color: var(--primary);
+                font-size: 1.2rem;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            nav.scrolled .nav-links {
+                top: 60px;
+                height: calc(100vh - 60px);
+            }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.2rem; }
+            .contact-container { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo" style="display:flex;align-items:center;gap:10px;"><img src="ruha-logo.png" alt="RUHA" style="height:45px;width:auto;">RUHA</a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#why-us">Why Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu-btn" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <img src="ruha-logo.png" alt="RUHA Logo" style="height:120px;width:auto;margin-bottom:20px;animation:fadeInUp 0.8s ease;">
+            <h1>RUHA</h1>
+            <p>Brewing Hope — Premium Bangladesh Tea | Exported Worldwide</p>
+            <a href="#contact" class="btn btn-primary">Request a Quote</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section-padding">
+        <div class="container">
+            <h2 class="section-title reveal">Our Heritage</h2>
+            <div class="about-grid">
+                <div class="about-img reveal">
+                    <img src="https://images.unsplash.com/photo-1576092762791-dd9e22206477?q=80&w=2070&auto=format&fit=crop" alt="Tea Gardens in Sylhet, Bangladesh">
+                </div>
+                <div class="about-text reveal">
+                    <p>Rooted in the lush, rolling hills of Sylhet and Chittagong, <strong>RUHA</strong> carries forward the rich legacy of Bangladesh's tea heritage. For generations, our fertile soils and unique monsoon climate have produced some of the world's finest teas.</p>
+                    <p>We work directly with historic tea estates, ensuring that every leaf is plucked at the peak of perfection. Our commitment to quality, sustainability, and ethical farming practices allows us to deliver an authentic taste of Bangladesh to connoisseurs across the globe.</p>
+                    <p>From the garden to your cup, we oversee every step of the process with meticulous care, guaranteeing unmatched freshness and flavor in every batch we export.</p>
+                    <a href="#contact" class="btn btn-outline" style="margin-top: 20px;">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products section-padding">
+        <div class="container">
+            <h2 class="section-title reveal">Our Premium Selection</h2>
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card reveal">
+                    <div class="product-icon"><i class="fas fa-mug-hot"></i></div>
+                    <h3 class="product-title">CTC Black Tea</h3>
+                    <p class="product-desc">Our most popular export. Known for its strong, robust flavor and rich amber color. Perfect for a hearty breakfast blend.</p>
+                    <a href="#contact" class="btn btn-outline">Inquire</a>
+                </div>
+                <!-- Product 2 -->
+                <div class="product-card reveal">
+                    <div class="product-icon"><i class="fas fa-leaf"></i></div>
+                    <h3 class="product-title">Orthodox Black Tea</h3>
+                    <p class="product-desc">Traditionally processed whole leaf tea offering a complex flavor profile with delicate, sweet undertones.</p>
+                    <a href="#contact" class="btn btn-outline">Inquire</a>
+                </div>
+                <!-- Product 3 -->
+                <div class="product-card reveal">
+                    <div class="product-icon"><i class="fab fa-envira"></i></div>
+                    <h3 class="product-title">Green Tea</h3>
+                    <p class="product-desc">Unfermented leaves that deliver a fresh, grassy taste. Packed with antioxidants and renowned for its health benefits.</p>
+                    <a href="#contact" class="btn btn-outline">Inquire</a>
+                </div>
+                <!-- Product 4 -->
+                <div class="product-card reveal">
+                    <div class="product-icon"><i class="fas fa-spa"></i></div>
+                    <h3 class="product-title">White Tea</h3>
+                    <p class="product-desc">The rarest and most delicate of teas, made from young buds. Offers a subtle, naturally sweet, and floral flavor.</p>
+                    <a href="#contact" class="btn btn-outline">Inquire</a>
+                </div>
+                <!-- Product 5 -->
+                <div class="product-card reveal">
+                    <div class="product-icon"><i class="fas fa-seedling"></i></div>
+                    <h3 class="product-title">Organic Tea</h3>
+                    <p class="product-desc">Cultivated without synthetic fertilizers or pesticides. Pure, natural, and certified organic for the health-conscious market.</p>
+                    <a href="#contact" class="btn btn-outline">Inquire</a>
+                </div>
+                <!-- Product 6 -->
+                <div class="product-card reveal">
+                    <div class="product-icon"><i class="fas fa-gift"></i></div>
+                    <h3 class="product-title">Specialty Blends</h3>
+                    <p class="product-desc">Custom premium blends crafted by our master tea tasters, infused with local spices and herbs for a unique experience.</p>
+                    <a href="#contact" class="btn btn-outline">Inquire</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="why-us" class="why-us section-padding">
+        <div class="container">
+            <h2 class="section-title reveal">Why Choose Us</h2>
+            <div class="features-grid">
+                <div class="feature-item reveal">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Certified Quality</h3>
+                    <p>ISO, HACCP, and Organic certified facilities.</p>
+                </div>
+                <div class="feature-item reveal">
+                    <i class="fas fa-truck-loading"></i>
+                    <h3>Direct from Garden</h3>
+                    <p>No middlemen. Ensuring freshness and traceability.</p>
+                </div>
+                <div class="feature-item reveal">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <h3>Competitive Pricing</h3>
+                    <p>Unbeatable value for bulk international orders.</p>
+                </div>
+                <div class="feature-item reveal">
+                    <i class="fas fa-box-open"></i>
+                    <h3>Custom Packaging</h3>
+                    <p>Tailored packaging solutions to meet your brand needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Export Markets -->
+    <section class="export-markets section-padding">
+        <div class="container">
+            <h2 class="section-title reveal">Global Reach</h2>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto; font-size: 1.1rem;" class="reveal">We proudly export our premium Bangladesh tea to leading markets around the world, meeting international quality standards.</p>
+            <div class="markets-container reveal">
+                <div class="market-badge"><i class="fas fa-globe-asia"></i> Pakistan</div>
+                <div class="market-badge"><i class="fas fa-globe-americas"></i> USA</div>
+                <div class="market-badge"><i class="fas fa-globe-europe"></i> UK</div>
+                <div class="market-badge"><i class="fas fa-globe-asia"></i> Saudi Arabia</div>
+                <div class="market-badge"><i class="fas fa-globe-europe"></i> Germany</div>
+                <div class="market-badge"><i class="fas fa-globe-asia"></i> UAE</div>
+                <div class="market-badge"><i class="fas fa-globe-africa"></i> Egypt</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section class="certifications">
+        <div class="container">
+            <div class="cert-logos reveal">
+                <div>ISO<br>9001</div>
+                <div>HACCP<br>Certified</div>
+                <div>USDA<br>Organic</div>
+                <div>Fair<br>Trade</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="contact section-padding">
+        <div class="container">
+            <h2 class="section-title reveal">Request a Quote</h2>
+            <div class="contact-container reveal">
+                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Thank you for your inquiry. We will contact you soon!');">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" required placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" required placeholder="john@example.com">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <input type="text" id="country" required placeholder="e.g. USA">
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity">Quantity Required (kg/MT)</label>
+                            <input type="text" id="quantity" required placeholder="e.g. 10 MT">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tea-type">Tea Type Interest</label>
+                        <select id="tea-type" required>
+                            <option value="">Select a Tea Type...</option>
+                            <option value="ctc">CTC Black Tea</option>
+                            <option value="orthodox">Orthodox Black Tea</option>
+                            <option value="green">Green Tea</option>
+                            <option value="white">White Tea</option>
+                            <option value="organic">Organic Tea</option>
+                            <option value="specialty">Specialty Blends</option>
+                            <option value="multiple">Multiple / Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message / Specific Requirements</label>
+                        <textarea id="message" required placeholder="Please provide any specific requirements regarding grades, packaging, or delivery..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>RUHA</h4>
+                    <p>Brewing Hope — Premium Bangladesh Tea Exporter.</p>
+                    <p>Delivering the finest teas from Sylhet and Chittagong to the world.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#products">Our Teas</a></li>
+                        <li><a href="#contact">Request Quote</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Tea Estate Road, Sylhet, Bangladesh</p>
+                    <p><i class="fas fa-phone"></i> +880 1735 572601</p>
+                    <p><i class="fas fa-envelope"></i> export@ruha.com.bd</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61579056629802" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 RUHA — Brewing Hope. All rights reserved. | Premium Bangladesh Tea Exporter</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/8801735572601" class="whatsapp-float" target="_blank" title="Contact RUHA on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        // Sticky Navbar
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if(navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // Scroll Animation (Reveal)
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Trigger once on load
+    </script>
+</body>
+</html>

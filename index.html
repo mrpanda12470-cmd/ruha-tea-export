@@ -213,17 +213,20 @@
         .top-bar {
             background: #040507;
             border-bottom: 1px solid rgba(223, 184, 88, 0.12);
-            padding: 8px 0;
-            font-size: 0.68rem;
+            padding: 9px 20px;
+            font-size: 0.66rem;
             letter-spacing: 3px;
             text-transform: uppercase;
-            color: var(--gold-300);
+            color: rgba(223, 184, 88, 0.85);
             text-align: center;
             font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .top-bar span {
-            color: var(--text-dim);
-            margin: 0 14px;
+            color: rgba(223, 184, 88, 0.35);
+            margin: 0 16px;
         }
 
         /* ─── NAVIGATION ─── */
@@ -232,80 +235,72 @@
             top: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(6, 7, 9, 0.85);
+            background: rgba(6, 7, 9, 0.88);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(223, 184, 88, 0.12);
+            border-bottom: 1px solid rgba(223, 184, 88, 0.15);
             transition: var(--transition-smooth);
         }
         nav.scrolled {
-            background: rgba(4, 5, 7, 0.95);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+            background: rgba(4, 5, 7, 0.98);
+            box-shadow: 0 10px 35px rgba(0,0,0,0.8);
+            border-bottom-color: rgba(223, 184, 88, 0.25);
         }
         .nav-container {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            max-width: 1240px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 16px 30px;
+            padding: 12px 36px;
+            gap: 24px;
         }
         .brand-logo {
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            gap: 14px;
             text-decoration: none;
+            flex-shrink: 0;
         }
         .brand-logo img {
-            height: 48px;
+            height: 54px;
             width: auto;
-            filter: drop-shadow(0 2px 8px rgba(223, 184, 88, 0.3));
+            filter: drop-shadow(0 2px 10px rgba(223, 184, 88, 0.3));
+            transition: transform 0.3s ease;
         }
-        .brand-title {
-            display: flex;
-            flex-direction: column;
-        }
-        .brand-title .title-name {
-            font-family: var(--font-display);
-            font-size: 1.4rem;
-            letter-spacing: 5px;
-            color: var(--gold-100);
-            font-weight: 600;
-            line-height: 1;
-        }
-        .brand-title .title-sub {
-            font-family: var(--font-serif);
-            font-size: 0.78rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--gold-500);
-            font-style: italic;
-            margin-top: 3px;
+        .brand-logo:hover img {
+            transform: scale(1.03);
         }
 
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 36px;
+            gap: 32px;
             list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-links li {
+            white-space: nowrap;
         }
         .nav-links a {
             color: var(--text-ivory);
-            font-size: 0.72rem;
+            font-size: 0.74rem;
             font-weight: 500;
-            letter-spacing: 2.8px;
+            letter-spacing: 2.2px;
             text-transform: uppercase;
             text-decoration: none;
+            white-space: nowrap;
             position: relative;
-            padding: 6px 0;
+            padding: 8px 0;
             transition: color 0.3s ease;
+            display: inline-block;
         }
         .nav-links a::after {
             content: '';
             position: absolute;
             bottom: 0; left: 0;
-            width: 0; height: 1px;
+            width: 0; height: 1.5px;
             background: var(--gold-gradient);
-            transition: width 0.35s ease;
+            transition: width 0.3s ease;
         }
         .nav-links a:hover {
             color: var(--gold-100);
@@ -314,10 +309,37 @@
             width: 100%;
         }
 
-        .nav-cta-btn {
-            padding: 10px 22px;
-            font-size: 0.68rem;
-            letter-spacing: 2.5px;
+        .nav-concierge-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 22px;
+            background: rgba(223, 184, 88, 0.08);
+            border: 1px solid var(--gold-300);
+            color: var(--gold-100);
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 2px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: var(--transition-smooth);
+        }
+        .nav-concierge-btn:hover {
+            background: var(--gold-gradient);
+            color: #07080a;
+            box-shadow: 0 4px 20px rgba(223, 184, 88, 0.35);
+            transform: translateY(-2px);
+        }
+        .nav-concierge-btn i {
+            font-size: 0.65rem;
+            transition: transform 0.3s ease;
+        }
+        .nav-concierge-btn:hover i {
+            transform: translateX(3px);
         }
 
         .mobile-toggle {
@@ -1207,7 +1229,7 @@
             }
             .nav-links.active { left: 0; }
             .mobile-toggle { display: block; }
-            .nav-cta-btn { display: none; }
+            .nav-concierge-btn { display: none; }
             .whatsapp-concierge .wa-text { display: none; }
             .whatsapp-concierge { padding: 10px; border-radius: 50%; }
         }
@@ -1215,32 +1237,30 @@
 </head>
 <body>
 
-    <!-- TOP PRESTIGE BAR -->
+    <!-- TOP PRESTIGE TICKER -->
     <div class="top-bar">
-        SINGLE-ORIGIN BANGLADESH TEA <span>♦</span> HERITAGE EST. 1850s <span>♦</span> WORLDWIDE BULK & PRIVATE LABEL ALLOCATIONS
+        SINGLE-ORIGIN BANGLADESH TEA <span>•</span> ESTATES OF SYLHET & SREEMANGAL <span>•</span> GLOBAL EXPORT ALLOCATIONS
     </div>
 
     <!-- MAIN LUXURY NAVIGATION -->
     <nav id="navbar">
         <div class="nav-container">
-            <a href="#" class="brand-logo">
+            <a href="#" class="brand-logo" title="RUHA — Brewing Hope">
                 <img src="ruha-logo.png" alt="RUHA Logo">
-                <div class="brand-title">
-                    <span class="title-name">RUHA</span>
-                    <span class="title-sub">Brewing Hope</span>
-                </div>
             </a>
 
             <ul class="nav-links" id="nav-links">
-                <li><a href="#heritage">The Terroir</a></li>
-                <li><a href="#collection">Reserve Collection</a></li>
-                <li><a href="#gardens">Gardens & Artisans</a></li>
+                <li><a href="#heritage">Terroir</a></li>
+                <li><a href="#collection">Reserve</a></li>
+                <li><a href="#gardens">Gardens</a></li>
                 <li><a href="#standards">Standards</a></li>
-                <li><a href="#markets">Global Reach</a></li>
-                <li><a href="#concierge">Private Inquiry</a></li>
+                <li><a href="#markets">Destinations</a></li>
+                <li><a href="#concierge">Inquiry</a></li>
             </ul>
 
-            <a href="#concierge" class="btn btn-gold nav-cta-btn">Export Concierge</a>
+            <a href="#concierge" class="nav-concierge-btn">
+                <span>Private Desk</span> <i class="fas fa-arrow-right"></i>
+            </a>
 
             <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
